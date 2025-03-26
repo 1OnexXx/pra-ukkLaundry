@@ -46,4 +46,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function cabang()
+    {
+        return $this->hasMany(Cabang::class , 'id_operator_cabang' , 'id'); 
+    }
 }

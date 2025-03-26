@@ -32,6 +32,7 @@
 
                     <form action="{{ route('register.submit') }}" method="post">
                         @csrf
+                        <input type="text" hidden name="role" value="customer">
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="text" class="form-control form-control-xl" placeholder="Email"
                                 name="email">

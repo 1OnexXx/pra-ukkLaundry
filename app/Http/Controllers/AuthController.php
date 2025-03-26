@@ -72,4 +72,26 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         return redirect('/login');
     }
+
+
+    public function showDirectorRegisterForm() {
+        return view('auth.regiterDRKT');
+    }
+    
+    public function registerDirector(Request $request) {
+        $request->validate([
+            'username' => 'required|string|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+    
+        User::create([
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => 'direktur', // Set default role sebagai direktur
+        ]);
+    
+        return redirect()->route('login')->with('success', 'Akun Direktur berhasil dibuat.');
+    }
 }

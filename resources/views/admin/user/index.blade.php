@@ -75,8 +75,8 @@
                                     <span class="badge bg-success">{{ $user->role }}</span>
                                 </td>
                                 <td>
-                                    <a href="{{ route('operator_cabang.user.edit') }}">edit</a>
-                                    <form action="{{ route('operator_cabang.user.destroy',$user->id) }}" method="post">
+                                    <a href="{{ route('operator_cabang.user.edit' , $user->id) }}" class="btn btn-warning">edit</a>
+                                    <form action="{{ route('operator_cabang.user.destroy',$user->id) }}" method="post"  onclick="return confirm('Are you sure?')">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger" type="submit">delete</button>
